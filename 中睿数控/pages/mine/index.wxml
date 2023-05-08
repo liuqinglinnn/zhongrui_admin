@@ -1,0 +1,248 @@
+<view class="head">
+</view>
+<view class="body">
+  <view class="user">
+    <view class="userpicture">
+      <image
+        class="userpicture_img"
+        src="{{userpicture}}"
+        mode="aspectFit"
+      >
+      </image>
+    </view>
+    <view class="userinfo">
+      <view class="username">
+        {{nickname}}
+      </view>
+      <view class="userlevel">
+        权限：{{level}}
+      </view>
+    </view>
+
+  </view>
+  <view class="operate_text">
+    常用操作
+  </view>
+  <view class="">
+
+  </view>
+
+  <view class="operate">
+    <view class="operateone" bindtap="chuzhishenhe">
+      <view class="operateone_text">
+        <view class="operateone_text_1" style="display:flex">
+          <view class="">
+            处置审核
+          </view>
+          <view wx:if="{{level==1}}">
+            ({{chuzhinum}})
+          </view>
+        </view>
+        <view class="operateone_text_2">
+          审核处置信息
+        </view>
+      </view>
+      <view class="operateone_icon">
+        <image
+          class="operateone_image"
+          src="/icon/fabu.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="operatetwo" bindtap="adminpeople">
+      <view class="operatetwo_text">
+        <view class="operatetwo_text_1">
+          成员管理
+        </view>
+        <view class="operatetwo_text_2">
+          管理下属成员
+        </view>
+      </view>
+      <view class="operatetwo_icon">
+        <image
+          class="operatetwo_image"
+          src="/icon/faqi.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+  </view>
+  <view class="button">
+    <view class="button1" bindtap="choosefile">
+      <view class="button1_">
+        <image
+          class="button1_icon"
+          src="/icon/zuzhi.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button1_text">
+        业务导入
+      </view>
+      <view class="button1_right">
+        <image
+          class="button1_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="border1">
+    </view>
+    <view class="button2" bindtap="download">
+      <view class="button2_">
+        <image
+          class="button2_icon"
+          src="/icon/geren.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button2_text">
+        数据导出
+      </view>
+      <view class="button2_right">
+        <image
+          class="button2_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="border1">
+
+    </view>
+    <view class="button2" bindtap="choosefilechange">
+      <view class="button2_">
+        <image
+          class="button2_icon"
+          src="/icon/lianxi.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button2_text">
+        业务更替
+      </view>
+      <view class="button2_right">
+        <image
+          class="button2_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="border1">
+
+    </view>
+    <view class="button2" bindtap="deletefile">
+      <view class="button2_">
+        <image
+          class="button2_icon"
+          src="/icon/delete.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button2_text">
+        项目删除
+      </view>
+      <view class="button2_right">
+        <image
+          class="button2_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="border1">
+
+    </view>
+    <!-- <view class="button2" bindtap="gezhicheliang">
+      <view class="button2_">
+        <image
+          class="button2_icon"
+          src="/icon/delete.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button2_text">
+        搁置车辆
+      </view>
+      <view class="button2_right">
+        <image
+          class="button2_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+    <view class="border1">
+
+    </view> -->
+    <view class="button6" bindtap="tuichudenglu">
+      <view class="button6_">
+        <image
+          class="button6_icon"
+          src="/icon/tuichu.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+      <view class="button6_text">
+        退出登录
+      </view>
+      <view class="button6_right">
+        <image
+          class="button6_right_icon"
+          src="/icon/right.png"
+          mode="aspectFit"
+        >
+        </image>
+      </view>
+    </view>
+  </view>
+  <view class="logo">
+    <image
+      class="logo_img"
+      src="../../icon/logo.png"
+      mode="aspectFit"
+    >
+
+    </image>
+  </view>
+
+</view>
+
+<modal
+  wx:if="{{projectlistpop}}"
+  title="请选择项目"
+  confirm-text="确认"
+  cancel-text="取消"
+  bindcancel="projectlistchangecancel"
+  bindconfirm="projectlistchangeconfirm"
+>
+  <picker
+    class=""
+    wx:if="{{projectlistpop}}"
+    mode="selector"
+    range="{{projectlist}}"
+    value="{{projectlistindex}}"
+    bindchange="sprojectlistindex"
+  >
+    <view>
+      删除项目：{{projectlist[projectlistindex]}}
+    </view>
+  </picker>
+</modal>
+

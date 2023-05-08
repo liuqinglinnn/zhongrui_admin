@@ -1,0 +1,68 @@
+<view class="biankuang">
+  <view class="content">
+    <view class="content_text">
+      催记记录
+    </view>
+    <textarea
+      class="content_input"
+      value="{{remark}}"
+      placeholder="请输入催记记录"
+      maxlength="500"
+      auto-height="true"
+      bindinput="sremark"
+      bindlinechange="%{15}"
+    ></textarea>
+  </view>
+  <view class="border"></view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text">
+      截图
+    </view>
+    <view class="UpLoadPicture_" wx:if="{{picture.length==0}}">
+      <image
+        class="UpLoadPicture_img"
+        src="/icon/add.png"
+        mode="scaleToFill"
+        bindtap="choosepicture"
+      >
+      </image>
+    </view>
+    <view class="UpLoadPicture2_" wx:if="{{picture.length!=0}}">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.tempFilePath}}"
+            mode="aspectFit"
+            bindtap='clickImg'
+            data-presrc="{{item.tempFilePath}}"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="end">
+  <view
+    class="save"
+    wx:if="{{picture.length!=0}}"
+    bindtap="choosepicture"
+  >
+    <view>
+      修改截图
+    </view>
+  </view>
+  <view class="yes" bindtap="Submit">
+    <view>
+      提交
+    </view>
+  </view>
+</view>
+

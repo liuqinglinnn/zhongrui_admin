@@ -1,0 +1,386 @@
+<!--展示贴g数据-->
+
+<view class="carbase">
+  <view class="carbase_text">
+    <view
+      class="carbase_text_title"
+      bindtap="copy"
+      data-item='{{car.carName}}'
+    >
+      {{car.carName||''}}
+    </view>
+    <view class="carbase_number">
+      <view
+        class="carbase_number_one"
+        bindtap="copy"
+        data-item='{{car.carPlate}}'
+      >
+        {{car.carPlate||''}}
+      </view>
+      <view
+        class="carbase_number_two"
+        bindtap="copy"
+        data-item='{{car.frame}}'
+      >
+        {{car.frame||''}}
+      </view>
+    </view>
+    <view class="carbase_text_title2">
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/jilu.png">
+        </image>
+        <view class="cartext">
+          贴G团队：{{car.firstSubUser||''}}，{{car.firstSubTime||''}}
+
+        </view>
+      </view>
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/jilu.png">
+        </image>
+        <view class="cartext">
+          贴G审核：{{car.firstPassUser||''}}，{{car.firstPassTime||''}}
+        </view>
+      </view>
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/dingwei.png">
+        </image>
+        <view class="cartext">
+          GPS情况：{{car.gpsSituationTwo||''}}
+        </view>
+      </view>
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/buji.png">
+        </image>
+        <view class="cartext" wx:if="{{car.taskGroup!=''}}">
+          车辆现状：{{car.carSituation||''}}
+        </view>
+        <view class="cartext" wx:if="{{car.taskGroup==''}}">
+          车辆现状：搁置
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="biaoti">
+  <view class="biaoti_bar">
+  </view>
+  <view class="biaoti_text">
+    车辆信息
+  </view>
+</view>
+<view class="biankuang">
+  <view class="title">
+    <view class="title_text">
+      车主姓名
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carOwnerName}}'
+    >
+      {{car.carOwnerName||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车主电话
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carOwnerPhone}}'
+    >
+      {{car.carOwnerPhone||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车辆属性
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carAttribute}}'
+    >
+      {{car.carAttribute||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      订单编号
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.orderId}}'
+    >
+      {{car.orderId||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      合同编号
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.contractId}}'
+    >
+      {{car.contractId||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      项目名称
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.projectName}}'
+    >
+      {{car.projectName||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text" style="display:flex;flex-direction:row;align-items: center;">
+      <view class="">
+        备注
+      </view>
+      <view
+        class=""
+        style="margin-left:25rpx;opacity: 0.7;font-size:30rpx"
+        bindtap="remarkchange"
+      >
+        修改
+      </view>
+    </view>
+    <view class="content_input">
+      {{car.remark||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text" style="display:flex;flex-direction:row;align-items: center;">
+      <view class="">
+        报备情况
+      </view>
+      <view class="" style="margin-left:25rpx;opacity: 0.7;font-size:30rpx">
+        报备人：{{car.fillingPerson||''}},{{car.fillingTime||''}}
+      </view>
+    </view>
+    <view
+      class="content_input"
+      bindtap="copy"
+      data-item='{{car.fillingSituation}}'
+    >
+      {{car.fillingSituation||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content" wx:if="{{car.isRemarkFifth==3}}">
+    <view class="content_text" style="color:#0cca80;  font-weight   : bold;">
+      申请延时原因
+    </view>
+    <view
+      class="content_input"
+      bindtap="copy"
+      data-item='{{yanchireason}}'
+    >
+      {{yanchireason||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text">
+      <view class="">
+        贴G图片
+      </view>
+      <view class="UpLoadPicture_text_pop" bindtap="zhaopiantanchuang">
+        图片要求
+      </view>
+    </view>
+    <view class="UpLoadPicture2_">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.url}}"
+            mode="aspectFit"
+            bindtap='clickImg'
+            data-presrc="{{item.url}}"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="biaoti">
+  <view class="biaoti_bar">
+  </view>
+  <view class="biaoti_text">
+    延时情况记录：
+  </view>
+</view>
+<view class="sadd" hidden="{{yanchiarr.length==0}}">
+  <view
+    class="s_for"
+    wx:for="{{yanchiarr}}"
+    wx:for-index="idx"
+    wx:for-item="item"
+    wx:if="{{item.type!=3}}"
+  >
+    <view class="s_for_list">
+      <view class="dot"></view>
+      <view class="text">
+        <view class="text_">
+          <view class="title">
+            延期情况：
+            <view class="" wx:if="{{item.type!=4}}">
+              {{item.nowTime||''}}天，
+            </view>
+            <view class="" wx:if="{{item.type==4}}">
+              驳回
+            </view>
+          </view>
+          <view class="time">
+            {{item.subTime||''}}
+          </view>
+        </view>
+        <view class="detail" wx:if="{{item.type!=4}}">
+          审核操作人：{{item.passUser||''}}
+        </view>
+        <view
+          class="num"
+          bindtap="yanqishowdetail"
+          data-idx="{{idx}}"
+        >
+          详情
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<view class="end">
+
+  <view
+    class="save"
+    bindtap="bohui"
+    wx:if="{{car.isRemarkFifth==3}}"
+  >
+    <view>
+      驳回
+    </view>
+  </view>
+  <view class="yes" bindtap="timelistchangecancel">
+    <view>
+      修改时长
+    </view>
+  </view>
+</view>
+<modal
+  wx:if="{{remarkpop}}"
+  title="请输入新备注"
+  confirm-text="确认"
+  cancel-text="取消"
+  bindcancel="remarkcancel"
+  bindconfirm="remarkconfirm"
+>
+  <textarea
+    class=""
+    value="{{remarkvalue}}"
+    placeholder="请输入内容"
+    maxlength="200"
+    bindinput="remarkinput"
+    bindlinechange="%{15}"
+  ></textarea>
+</modal>
+<modal
+  wx:if="{{timelistpop}}"
+  title="修改时长"
+  confirm-text="确认"
+  cancel-text="取消"
+  bindcancel="timelistchangecancel"
+  bindconfirm="timelistchangeconfirm"
+>
+  <picker
+    class=""
+    wx:if="{{timelistpop}}"
+    mode="selector"
+    range="{{timelist}}"
+    range-key=""
+    bindchange="stimelistindex"
+  >
+    <view>
+      贴g入库剩余天数：{{timelist[timelistindex]}}
+    </view>
+  </picker>
+</modal>
+
+<modal
+  wx:if="{{refusepop}}"
+  title="请输入驳回原因"
+  confirm-text="驳回"
+  cancel-text="取消"
+  bindcancel="bohuiquxiao"
+  bindconfirm="bohuitongguo"
+>
+  <textarea
+    class=""
+    placeholder="请输入内容"
+    maxlength="200"
+    bindinput="bohuireasoninput"
+    bindlinechange="%{15}"
+  ></textarea>
+</modal>
+
+<modal
+  wx:if="{{showdetailpop}}"
+  title="延时情况详情"
+  confirm-text="确认"
+  no-cancel
+  bindconfirm="yanqidetail"
+>
+  <view>
+    延期申请：{{yanchidetail.type==4?'驳回':'通过'}}
+  </view>
+  <view>
+    延期前天数：{{yanchidetail.beforeTime||''}}
+  </view>
+  <view>
+    延期后天数：{{yanchidetail.nowTime||''}}
+  </view>
+  <view>
+    延期提交时间：{{yanchidetail.subTime||''}}
+  </view>
+  <view>
+    延期提交人：{{yanchidetail.subUser||''}}
+  </view>
+  <view>
+    审核操作时间：{{yanchidetail.passTime||''}}
+  </view>
+  <view>
+    审核操作人：{{yanchidetail.passUser||''}}
+  </view>
+  <view>
+    延期理由：{{yanchidetail.text||''}}
+  </view>
+  <view>
+    驳回理由：{{yanchidetail.rejectText||"空"}}
+  </view>
+
+</modal>
+

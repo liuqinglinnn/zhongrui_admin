@@ -1,0 +1,199 @@
+.weui-tab_content {
+    font-size     : 32rpx;
+    display       : flex;
+    flex-direction: column;
+  
+    .pageone {
+      width         : 100%;
+      display       : flex;
+      flex-direction: column;
+  
+      .select {
+        width          : 100%;
+        height         : 100rpx;
+        display        : flex;
+        flex-direction : row;
+        align-items    : center;
+        justify-content: center;
+  
+        .select1 {
+          display        : flex;
+          flex-direction : row;
+          align-items    : center;
+          justify-content: center;
+          width          : 33%;
+  
+          .text1 {
+            opacity  : 0.7;
+            font-size: 30rpx;
+          }
+        }
+  
+        .select2 {
+          display        : flex;
+          flex-direction : row;
+          align-items    : center;
+          justify-content: center;
+          width          : 33%;
+  
+          .text2 {
+            opacity  : 0.7;
+            font-size: 30rpx;
+          }
+        }
+  
+        .select3 {
+          display        : flex;
+          flex-direction : row;
+          align-items    : center;
+          justify-content: center;
+          width          : 33%;
+  
+          .text3 {
+            opacity  : 0.7;
+            font-size: 30rpx;
+          }
+        }
+      }
+  
+      .search {
+        width         : 100%;
+        height        : 100rpx;
+        display       : flex;
+        flex-direction: row;
+        align-items   : center;
+  
+        .search_ {
+          background-color: white;
+          height          : 75rpx;
+          width           : 70%;
+          margin-left     : 50rpx;
+          border-radius   : 75rpx;
+          display         : flex;
+          flex-direction  : row;
+          align-items     : center;
+          box-shadow      : 3rpx 3rpx 8rpx 2rpx #c8c3c3;
+  
+          .search_icon {
+            width      : 50rpx;
+            height     : 50rpx;
+            margin-left: 25rpx;
+          }
+  
+          .search_input {
+            font-size  : 30rpx;
+            margin-left: 20rpx;
+          }
+  
+        }
+  
+        .cancel {
+          font-size  : 30rpx;
+          margin-left: 10rpx;
+          opacity    : 0.7;
+          color      : black;
+        }
+      }
+  
+      .carlist {
+        width           : 100%;
+        background-color: rgb(245, 245, 245);
+  
+        .carlist_item {
+          width           : 95%;
+          margin-left     : 2.5%;
+          margin-top      : 10rpx;
+          margin-bottom   : 10rpx;
+          background-color: white;
+          box-shadow      : 0px 0px 5px rgb(175, 175, 175);
+          border-radius   : 10rpx;
+        }
+  
+        .carlist_item_one {
+          width      : 100%;
+          font-size  : 35rpx;
+          font-weight: bolder;
+          text-align : center;
+        }
+  
+        .carlist_item_state {
+          width        : 150rpx;
+          border-radius: 15rpx;
+          border       : 5rpx solid antiquewhite;
+          text-align   : center;
+          position     : absolute;
+          right        : 50rpx;
+          margin-top   : 75rpx;
+          font-size    : 25rpx;
+          opacity      : 0.7;
+        }
+        .carlist_item__ {
+          display        : flex;
+          flex-direction : column;
+          justify-content: center;
+          width          : 100%;
+  margin-left: 25rpx;
+  margin-top: 25rpx;
+          .carlist_item_two {
+            width          : 50%;
+            display        : flex;
+            flex-direction : row;
+            justify-content: flex-start;
+            align-items    : center;
+            opacity        : 0.8;
+            font-size      : 30rpx;
+          }
+  
+          .carlist_item_three {
+            margin-top: 10rpx;
+            width          : 50%;
+            display        : flex;
+            flex-direction : row;
+            justify-content: flex-start;
+            align-items    : center;
+            opacity        : 0.8;
+            font-size      : 30rpx;
+          }
+        }
+      }
+    }
+  }
+  
+  .carlisticon {
+    width          : 50rpx;
+    height         : 50rpx;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+  }
+  
+  .nav {
+    height          : 86rpx;
+    text-align      : center;
+    color           : #A8A8A8;
+    font-size       : 4vw;
+    background-color: #FFF;
+    border-bottom   : 1rpx solid #DFDFDF;
+    width           : 100%;
+    box-sizing      : border-box;
+    overflow        : hidden;
+    line-height     : 80rpx;
+    white-space     : nowrap;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    z-index         : 99;
+  }
+  
+  .nav-item {
+    width     : 22%;
+    display   : inline-block;
+    text-align: center;
+  }
+  
+  .nav-item.active {
+    transition   : all 0.3s;
+    border-bottom: 10rpx solid #478ff3;
+    color        : #478ff3;
+  }

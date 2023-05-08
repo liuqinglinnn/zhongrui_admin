@@ -1,0 +1,302 @@
+<view class="carbase">
+  <view class="carbase_text">
+    <view
+      class="carbase_text_title"
+      bindtap="copy"
+      data-item='{{car.carName}}'
+    >
+      {{car.carName||''}}
+    </view>
+    <view class="carbase_number">
+      <view
+        class="carbase_number_one"
+        bindtap="copy"
+        data-item='{{car.carPlate}}'
+      >
+        {{car.carPlate||''}}
+      </view>
+      <view
+        class="carbase_number_two"
+        bindtap="copy"
+        data-item='{{car.frame}}'
+      >
+        {{car.frame||''}}
+      </view>
+    </view>
+    <view class="carbase_text_title2">
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/dingwei.png">
+        </image>
+        <view class="cartext">
+          <view class="">
+            GPS:{{car.gpsSituation||''}}，{{car.gpsSituationTwo||''}}
+          </view>
+        </view>
+      </view>
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/jilu.png">
+        </image>
+        <view class="cartext">
+          收车情况：{{car.getCarTime||''}}
+        </view>
+      </view>
+      <view class="carbase_text_title2_one">
+        <image class="caricon" src="../../icon/buji.png">
+        </image>
+        <view class="cartext" wx:if="{{car.taskGroup!=''}}">
+          车辆现状：{{car.carSituation||''}}
+        </view>
+        <view class="cartext" wx:if="{{car.taskGroup==''}}">
+          车辆现状：搁置
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="biaoti">
+  <view class="biaoti_bar">
+  </view>
+  <view class="biaoti_text">
+    车辆信息
+  </view>
+</view>
+<view class="biankuang">
+  <view class="title">
+    <view class="title_text">
+      车主姓名
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carOwnerName}}'
+    >
+      {{car.carOwnerName||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车主电话
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carOwnerPhone}}'
+    >
+      {{car.carOwnerPhone||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车辆属性
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.carAttribute}}'
+    >
+      {{car.carAttribute||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      订单编号
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.orderId}}'
+    >
+      {{car.orderId||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      合同编号
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.contractId}}'
+    >
+      {{car.contractId||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      项目名称
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.projectName}}'
+    >
+      {{car.projectName||''}}
+    </view>
+  </view>
+  <view class="title">
+    <view class="title_text">
+      欠款金额
+    </view>
+    <view
+      class="title_text2"
+      bindtap="copy"
+      data-item='{{car.principal}}'
+    >
+      {{car.principal||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text" style="display:flex;flex-direction:row;align-items: center;">
+      <view class="">
+        备注
+      </view>
+      <view
+        class=""
+        style="margin-left:25rpx;opacity: 0.7;font-size:30rpx"
+        bindtap="remarkchange"
+      >
+        修改
+      </view>
+    </view>
+    <view class="content_input">
+      {{car.remark||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text" style="display:flex;flex-direction:row;align-items: center;">
+      <view class="">
+        报备情况
+      </view>
+      <view class="" style="margin-left:25rpx;opacity: 0.7;font-size:30rpx">
+        报备人：{{car.fillingPerson||''}} {{car.fillingTime||''}}
+      </view>
+    </view>
+    <view
+      class="content_input"
+      bindtap="copy"
+      data-item='{{car.fillingSituation}}'
+    >
+      {{car.fillingSituation||''}}
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="border"></view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text">
+      <view class="">
+        贴G图片
+      </view>
+
+    </view>
+
+    <view class="UpLoadPicture_" wx:if="{{picture1.length==0}}">
+      <image
+        class="UpLoadPicture_img"
+        src="/icon/imageinput.png"
+        mode="scaleToFill"
+      >
+      </image>
+    </view>
+    <view class="UpLoadPicture2_" wx:if="{{picture1.length!=0}}">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture1}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.url}}"
+            mode="aspectFit"
+            bindtap='clickImg'
+            data-presrc="{{item.url}}"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text" wx:if="{{picture2.length!=0}}">
+      <view class="">
+        变动申请
+      </view>
+    </view>
+    <view class="UpLoadPicture2_">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture2}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+        bindtap='clickImg'
+        data-presrc="{{item.url}}"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.url}}"
+            mode="aspectFit"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="end" wx:if="{{car.isRemarkOne==3}}">
+  <view class="save" bindtap="bohui">
+    <view>
+      驳回
+    </view>
+  </view>
+  <view class="yes" bindtap="Submit">
+    <view>
+      通过审核
+    </view>
+  </view>
+</view>
+
+<modal
+  wx:if="{{refusepop}}"
+  title="请输入驳回原因"
+  confirm-text="驳回"
+  cancel-text="取消"
+  bindcancel="bohuiquxiao"
+  bindconfirm="bohuitongguo"
+>
+  <textarea
+    class=""
+    placeholder="请输入内容"
+    maxlength="200"
+    bindinput="bohuireasoninput"
+    bindlinechange="%{15}"
+  ></textarea>
+</modal>
+
+<modal
+  wx:if="{{remarkpop}}"
+  title="请输入新备注"
+  confirm-text="确认"
+  cancel-text="取消"
+  bindcancel="remarkcancel"
+  bindconfirm="remarkconfirm"
+>
+  <textarea
+    class=""
+    value="{{remarkvalue}}"
+    placeholder="请输入内容"
+    maxlength="200"
+    bindinput="remarkinput"
+    bindlinechange="%{15}"
+  ></textarea>
+</modal>
+

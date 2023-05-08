@@ -1,0 +1,263 @@
+<!-- 页面内容 -->
+<view class="weui-tab_content">
+  <view class="pageone">
+    <view class="select">
+      <view class="select1">
+        <view class="text1">
+          <picker
+            bindchange="pickerone"
+            value="{{xiangmuindex}}"
+            range="{{xiangmulist}}"
+          >
+            <view class="picker">
+              {{xiangmulist[xiangmuindex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByTime==0}}">
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByPrice==0}}"
+        >
+          车300估值
+        </view>
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByPrice==1&&orderByPriceType==1}}"
+        >
+          车300估值(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByPrice==1&&orderByPriceType==0}}"
+        >
+          车300估值(倒序)
+        </view>
+      </view>
+      <!-- <view class="select2" wx:if="{{orderByPrice==0}}">
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByTime==0}}"
+        >
+          委案时间
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByTime==1&&orderByTimeType==1}}"
+        >
+          委案时间(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByTime==1&&orderByTimeType==0}}"
+        >
+          委案时间(倒序)
+        </view>
+      </view> -->
+      <view class="select2">
+        <view class=" text2">
+          <picker
+            bindchange="pickertwo"
+            value="{{chuzhiindex}}"
+            range="{{chuzhilist}}"
+          >
+            <view class="picker">
+              {{chuzhilist[chuzhiindex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="search">
+      <view class="search_">
+        <image
+          class="search_icon"
+          src="/icon/search.png"
+          mode="aspectFill"
+        >
+        </image>
+        <input
+          class="search_input"
+          value="{{inputvalue}}"
+          type="text"
+          placeholder="搜索车辆"
+          bindinput="inputevent"
+        >
+        </input>
+      </view>
+      <view class="cancel" bindtap="search">
+        搜索
+      </view>
+      <view class="cancel" bindtap="search">
+        取消
+      </view>
+    </view>
+    <!--车列表-->
+    <view
+      class="carlist"
+      wx:for="{{showlist}}"
+      wx:for-index="idx"
+      wx:for-item="item"
+      bindtap="showdetail"
+      data-classify="{{item}}"
+      data-num="{{currentTab}}"
+    >
+      <view class="carlist_item">
+        <view class="carlist_item_one">
+          {{item.carName||''}}
+        </view>
+        <view class="carlist_item__">
+          <view class="carlist_item_two">
+            <image class="carlisticon" src="../../icon/chepai.png">
+
+            </image>
+            <view class="">
+              车牌：{{item.carPlate||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              车主姓名:
+            </view>
+            <view style="">
+              {{item.carOwnerName||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/benjin.png">
+            </image>
+            <view class="">
+              欠款金额:
+            </view>
+            <view style="">
+              {{item.principal||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              车300估价:
+            </view>
+            <view style="">
+              {{item.evaluation||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              分配队伍:
+            </view>
+            <view style="">
+              {{item.taskGroup||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              项目名称:
+            </view>
+            <view style="">
+              {{item.projectName||''}}
+            </view>
+          </view>
+          <view
+            class="carlist_item_three"
+            style="width:auto ;height:auto"
+            wx:if="{{currentTab ==1}}"
+          >
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view>
+              贴g时间:
+            </view>
+            <view style="width:500rpx ;height:auto">
+              {{item.firstSubTime||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==1}}">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              贴g团队:
+            </view>
+            <view style="">
+              {{item.firstSubUser||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==2||currentTab ==4}}">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              收车时间:
+            </view>
+            <view style="">
+              {{item.getCarTime||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==2||currentTab ==4}}">
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              收车团队
+            </view>
+            <view style="">
+              {{item.getCarGroup||''}}
+            </view>
+          </view>
+          <view
+            class="carlist_item_three"
+            style="width:auto ;height:auto"
+            wx:if="{{currentTab ==2||currentTab ==4}}"
+          >
+            <image class="carlisticon" src="../../icon/benjin.png">
+
+            </image>
+            <view class="">
+              送达车库:
+            </view>
+            <view style="">
+              {{item.sentGarage||''}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

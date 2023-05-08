@@ -1,0 +1,62 @@
+<image
+  class=""
+  src="../../icon/logo.png"
+  mode="aspectFit"
+>
+
+</image>
+<view class="body">
+  <view class="login_one">
+    <view class="login_one_text">
+      账号
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{username}}"
+        type="number"
+        placeholder="请输入手机号"
+        maxlength="20"
+        bindinput="susername"
+      >
+      </input>
+    </view>
+
+  </view>
+  <view class="login_one">
+    <view class="login_one_text">
+      密码
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{password}}"
+        password="{{!open}}"
+        type="text"
+        placeholder="请输入密码"
+        maxlength="50"
+        bindinput="spassword"
+      >
+      </input>
+      <image
+        src="{{open?'../../icon/oeyes.png':'../../icon/ceyes.png'}}"
+        class="login_one_eyes"
+        catchtap="switch"
+      />
+    </view>
+
+  </view>
+</view>
+<view class="bottom">
+  <view class="denglu" bindtap="slogin">
+    登录
+  </view>
+  <view
+    class="denglu"
+    bindtap="regist"
+    style=" background-color   : rgb(108, 153, 190);  border          : 5rpx solid rgb(108, 153, 190);"
+  >
+    注册
+  </view>
+</view>
+

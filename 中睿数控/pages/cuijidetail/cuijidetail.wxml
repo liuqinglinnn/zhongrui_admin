@@ -1,0 +1,41 @@
+<view class="biankuang">
+
+  <view class="content">
+    <view class="content_text" style="display:flex;flex-direction:row;align-items: center;">
+      <view class="">
+        详情
+      </view>
+    </view>
+    <text class="content_input" selectable="true" space="false" decode="false">
+     {{remark||''}}
+  </text>
+  </view>
+  <view class="border"></view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text">
+      <view class="">
+        截图
+      </view>
+    </view>
+    <view class="UpLoadPicture2_">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.url}}"
+            mode="aspectFit"
+            bindtap='clickImg'
+            data-presrc="{{item.url}}"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

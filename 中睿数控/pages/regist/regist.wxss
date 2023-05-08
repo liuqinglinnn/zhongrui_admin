@@ -1,0 +1,58 @@
+page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.body {
+  background-color: white;
+  width: 80%;
+  margin-top: 50;
+  border-radius: 15rpx;
+  display: flex;
+  flex-direction: column;
+}
+.body .login_one {
+  margin-top: 25rpx;
+  width: 100%;
+  height: auto;
+}
+.body .login_one_ {
+  margin-top: 25rpx;
+  width: 100%;
+  background-color: #cdd1bb;
+  height: 75rpx;
+  border-radius: 75rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.body .login_one_ .login_one_input {
+  width: 80%;
+  margin-left: 25rpx;
+}
+.body .login_one_ .login_one_eyes {
+  width: 50rpx;
+  height: 50rpx;
+}
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.bottom .denglu {
+  margin-top: 50rpx;
+  width: 35%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  height: 75rpx;
+  border: 5rpx solid #3ab54a;
+  background-color: #3ab54a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15rpx;
+  color: white;
+}

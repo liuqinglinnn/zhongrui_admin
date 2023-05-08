@@ -1,0 +1,224 @@
+<view class="biankuang">
+  <view class="title">
+    <view class="title_text">
+      处置方式
+    </view>
+    <picker
+      class="title_input"
+      mode="selector"
+      value="{{solvemodelindex}}"
+      bindchange="ssolvemodel"
+      range="{{solvemodel}}"
+    >
+      <view>
+        {{solvemodel[solvemodelindex]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      金额
+    </view>
+    <input
+      class="title_input"
+      value="{{price}}"
+      type="number"
+      placeholder="请输入金额"
+      maxlength="50"
+      bindinput="sprice"
+    >
+    </input>
+  </view>
+  <view class="border" wx:if="{{solvemodelindex==0||solvemodelindex==2}}"></view>
+  <view class="title" wx:if="{{solvemodelindex==0||solvemodelindex==2}}">
+    <view class="title_text">
+      对方姓名
+    </view>
+    <input
+      class="title_input"
+      value="{{theOtherName}}"
+      type="text"
+      placeholder="请输入对方姓名"
+      maxlength="20"
+      bindinput="stheOtherName"
+    >
+    </input>
+  </view>
+  <view class="border" wx:if="{{solvemodelindex==0||solvemodelindex==2}}"></view>
+  <view class="title" wx:if="{{solvemodelindex==0||solvemodelindex==2}}">
+    <view class="title_text">
+      公司（选填）
+    </view>
+    <input
+      class="title_input"
+      value="{{company}}"
+      type="text"
+      placeholder="请输入公司"
+      maxlength="50"
+      bindinput="scompany"
+    >
+    </input>
+  </view>
+
+  <view class="border" wx:if="{{solvemodelindex==1}}"></view>
+  <view class="title" wx:if="{{solvemodelindex==1}}">
+    <view class="title_text">
+      登记姓名
+    </view>
+    <input
+      class="title_input"
+      value="{{registerName}}"
+      type="number"
+      placeholder="请输入登记姓名"
+      maxlength="20"
+      bindinput="sregisterName"
+    >
+    </input>
+  </view>
+  <view class="border" wx:if="{{solvemodelindex==1}}"></view>
+  <view class="title" wx:if="{{solvemodelindex==1}}">
+    <view class="title_text">
+      登记证书所在
+    </view>
+    <input
+      class="title_input"
+      value="{{certificateLocation}}"
+      type="number"
+      placeholder="请输入 登记证书所在"
+      maxlength="50"
+      bindinput="scertificateLocation"
+    >
+    </input>
+  </view>
+  <view class="border" wx:if="{{solvemodelindex==1}}"></view>
+  <view class="title" wx:if="{{solvemodelindex==1}}">
+    <view class="title_text">
+      过户后车牌
+    </view>
+    <input
+      class="title_input"
+      value="{{plate}}"
+      type="number"
+      placeholder="请输入过户后车牌"
+      maxlength="50"
+      bindinput="splate"
+    >
+    </input>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      联系方式
+    </view>
+    <input
+      class="title_input"
+      value="{{phone}}"
+      type="number"
+      placeholder="请输入联系方式"
+      maxlength="20"
+      bindinput="sphone"
+    >
+    </input>
+  </view>
+  <view class="border"></view>
+  <view class="time">
+    <view class="time_text">
+      回款时间
+    </view>
+    <view class="time_">
+      <picker
+        class="time_date"
+        mode="date"
+        value="{{huishoudate}}"
+        start="2022-06-01"
+        end="2025-09-01"
+        bindchange="shuishoudate"
+      >
+        <view>
+          {{huishoudate}}
+        </view>
+      </picker>
+      <picker
+        class="time_date"
+        mode="time"
+        value="{{huishoutime}}"
+        start="09:01"
+        end="21:01"
+        bindchange="shuishoutime"
+      >
+        <view>
+          {{huishoutime}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text">
+      备注
+    </view>
+    <textarea
+      class="content_input"
+      value="{{remark}}"
+      placeholder="请输入备注"
+      maxlength="500"
+      auto-height="true"
+      bindinput="sremark"
+      bindlinechange="%{15}"
+    ></textarea>
+  </view>
+  <view class="border"></view>
+  <view class="UpLoadPicture">
+    <view class="UpLoadPicture_text">
+      付款截图
+    </view>
+    <view class="UpLoadPicture_" wx:if="{{picture.length==0}}">
+      <image
+        class="UpLoadPicture_img"
+        src="/icon/add.png"
+        mode="scaleToFill"
+        bindtap="choosepicture"
+      >
+      </image>
+    </view>
+    <view class="UpLoadPicture2_" wx:if="{{picture.length!=0}}">
+      <view
+        class="UpLoadPicture2_item"
+        wx:for="{{picture}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+      >
+        <view class="UpLoadPicture2_item_">
+          <image
+            class="UpLoadPicture2_img"
+            src="{{item.tempFilePath}}"
+            mode="aspectFit"
+            bindtap='clickImg'
+            data-presrc="{{item.tempFilePath}}"
+          >
+          </image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="end">
+  <view
+    class="save"
+    wx:if="{{picture.length!=0}}"
+    bindtap="choosepicture"
+  >
+    <view>
+      修改材料
+    </view>
+  </view>
+  <view class="yes" bindtap="Submit">
+    <view>
+      提交申请
+    </view>
+  </view>
+</view>
+

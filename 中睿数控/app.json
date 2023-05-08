@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/head/head",
+    "pages/home/index",
+    "pages/mine/index",
+    "pages/shenhegps/shenhegps",
+    "pages/tiegps/tiegps",
+    "pages/chuzhishenqin/chuzhishenqin",
+    "pages/chuzhishenhe/chuzhishenhe",
+    "pages/chuzhishenhedetail/chuzhishenhedetail",
+    "pages/cardetail/cardetail",
+    "pages/cuishou/cuishou", 
+    "pages/jieqing/jieqing",
+    "pages/yichuzhidetail/yichuzhidetail",
+    "pages/adminpeople/adminpeople",
+    "pages/regist/regist",
+    "pages/addcuiji/addcuiji",
+    "pages/cuijidetail/cuijidetail",
+    "pages/xiugaicailiao/xiugaicailiao"
+  ], 
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中睿数控",
+    "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.5",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "requiredPrivateInfos": ["getLocation", "chooseLocation"], 
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home_active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "icon/admin.png",
+        "selectedIconPath": "icon/admin_active.png"
+      }
+    ],
+    "color": "#696969",
+    "selectedColor": "#FFD84A"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,124 @@
+<view class="search">
+  <view class="search_">
+    <image
+      class="search_icon"
+      src="/icon/search.png"
+      mode="aspectFill"
+    >
+    </image>
+    <input
+      class="search_input"
+      value="{{inputvalue}}"
+      type="text"
+      placeholder="搜索成员名"
+      bindinput="inputevent"
+    >
+    </input>
+  </view>
+  <view class="cancel" bindtap="search">
+    搜索
+  </view>
+  <view class="cancel" bindtap="cancelsearch">
+    取消
+  </view>
+</view>
+
+<view class="admin">
+  <view class="adminpeople">
+    <view class="people_for_right">
+      <view class="people_for_right_name">
+        {{nickname}}
+      </view>
+      <view class="people_for_right_quanxian" style=";">
+        权限：{{level}}
+      </view>
+    </view>
+    <view class="people_buttom_">
+      <view
+        class="people_buttom"
+        bindtap="addpeople"
+        style="opacity:0.7;font-size:25rpx"
+      >
+        账号新增
+      </view>
+      <view
+        class="people_buttom"
+        bindtap="addproup"
+        style="opacity:0.7;font-size:25rpx"
+      >
+        队伍新增
+      </view>
+    </view>
+
+  </view>
+  <view
+    class=""
+    wx:for="{{grouplist}}"
+    wx:for-item="items"
+  >
+    <view
+      class="people_grouplist"
+      hover-class="none"
+      hover-stop-propagation="false"
+    >
+      <view class="people_group">
+        队伍：{{items.name}}
+      </view>
+      <view
+        class="people_groupcancel"
+        bindtap="huishougroup"
+        data-id="{{items.id}}"
+      >
+        队伍解散
+      </view>
+    </view>
+
+    <view class="people">
+      <view
+        class="people_for"
+        wx:for="{{peoplelist}}"
+        wx:for-index="idx"
+        wx:for-item="item"
+        wx:if="{{item.belongGroup==items.name}}"
+      >
+        <view class="people_for_right">
+          <view class="people_for_right_name">
+            队员：{{item.nickname}}
+          </view>
+          <view class="people_for_right_quanxian">
+            权限：{{item.level}}
+          </view>
+          <view class="people_for_right_quanxian">
+            手机号：{{item.username}}
+          </view>
+        </view>
+        <view
+          class="people_buttom"
+          bindtap="huishou"
+          data-id="{{item.id}}"
+          style="opacity:0.7;font-size:25rpx"
+        >
+          账号收回
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<modal
+  wx:if="{{addprouppop}}"
+  title="创建队伍"
+  confirm-text="创建"
+  cancel-text="取消"
+  bindcancel="addproupcancel"
+  bindconfirm="addproupconfirm"
+>
+  <textarea
+    class=""
+    placeholder="请输入队伍名称"
+    maxlength="10"
+    bindinput="addproupnameinput"
+    bindlinechange="%{15}"
+  ></textarea>
+</modal>
+

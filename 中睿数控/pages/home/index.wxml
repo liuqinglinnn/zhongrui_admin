@@ -1,0 +1,580 @@
+<scroll-view
+  scroll-x="true"
+  class="nav"
+  scroll-left="{{navScrollLeft}}"
+  scroll-with-animation="{{true}}"
+>
+  <block
+    wx:for="{{navData}}"
+    wx:for-index="idx"
+    wx:for-item="navItem"
+    wx:key="idx"
+  >
+    <view
+      class="nav-item {{currentTab == idx ?'active':''}}"
+      data-current="{{idx}}"
+      bindtap="switchNav"
+    >
+      <view>
+        {{navItem}}
+        <text wx:if="{{idx==0}}">({{nofoundnum}}) </text>
+        <text wx:if="{{idx==1}}">({{yitiegnum}}) </text>
+        <text wx:if="{{idx==2}}">({{zaikunum}}) </text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<!-- 页面内容 -->
+<view class="weui-tab_content">
+  <view class="pageone">
+    <view class="select">
+      <view class="select1" wx:if="{{shenheswitch==0}}">
+        <view class="text1">
+          <picker
+            bindchange="pickerone"
+            value="{{xiangmuindex}}"
+            range="{{xiangmulist}}"
+          >
+            <view class="picker">
+              {{xiangmulist[xiangmuindex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByTime==0}}">
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByPrice==0}}"
+        >
+          车300估值
+        </view>
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByPrice==1&&orderByPriceType==1}}"
+        >
+          车300估值(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="classifychange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByPrice==1&&orderByPriceType==0}}"
+        >
+          车300估值(倒序)
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByPrice==0&&currentTab!=1&&currentTab!=2&&currentTab!=4}}">
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByTime==0}}"
+        >
+          委案时间
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByTime==1&&orderByTimeType==1}}"
+        >
+          委案时间(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByTime==1&&orderByTimeType==0}}"
+        >
+          委案时间(倒序)
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByPrice==0&&currentTab==1}}">
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByTime==0}}"
+        >
+          贴G时间
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByTime==1&&orderByTimeType==1}}"
+        >
+          贴G时间(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByTime==1&&orderByTimeType==0}}"
+        >
+          贴G时间(倒序)
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByPrice==0&&currentTab==2}}">
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByTime==0}}"
+        >
+          入库时间
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByTime==1&&orderByTimeType==1}}"
+        >
+          入库时间(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByTime==1&&orderByTimeType==0}}"
+        >
+          入库时间(倒序)
+        </view>
+      </view>
+      <view class="select2" wx:if="{{orderByPrice==0&&currentTab==4}}">
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="1"
+          wx:if="{{orderByTime==0}}"
+        >
+          处置时间
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="1"
+          data-num2="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{orderByTime==1&&orderByTimeType==1}}"
+        >
+          处置时间(正序)
+        </view>
+        <view
+          class="text2"
+          bindtap="weianshijianchange"
+          data-num="0"
+          data-num2="0"
+          style="color: #478ff3;"
+          wx:if="{{orderByTime==1&&orderByTimeType==0}}"
+        >
+          处置时间(倒序)
+        </view>
+      </view>
+      <view class="select2" wx:if="{{currentTab ==0}}">
+        <view class="text2" bindtap="changeaudit">
+
+        </view>
+        <view
+          class="text2"
+          bindtap="changeaudit"
+          data-num="1"
+          wx:if="{{shenheswitch==0}}"
+        >
+          待审核({{auditnum}})
+        </view>
+        <view
+          class="text2"
+          bindtap="changeaudit"
+          data-num="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{shenheswitch==1}}"
+        >
+          待审核({{auditnum}})
+        </view>
+      </view>
+      <view
+        class="select2"
+        data-num="5"
+        wx:if="{{currentTab ==3}}"
+      >
+        <view
+          class="text2"
+          bindtap="fenqichange"
+          data-num="1"
+          wx:if="{{inStage==0}}"
+        >
+          分期中
+        </view>
+        <view
+          class="text2"
+          bindtap="fenqichange"
+          data-num="0"
+          style="color: rgb(12, 202, 128);"
+          wx:if="{{inStage==1}}"
+        >
+          分期中
+        </view>
+
+      </view>
+      <view class="select2" wx:if="{{currentTab==4}}">
+        <view class=" text2">
+          <picker
+            bindchange="pickertwo"
+            value="{{chuzhiindex}}"
+            range="{{chuzhilist}}"
+          >
+            <view class="picker">
+              {{chuzhilist[chuzhiindex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="search">
+      <view class="search_">
+        <image
+          class="search_icon"
+          src="/icon/search.png"
+          mode="aspectFill"
+        >
+        </image>
+        <input
+          class="search_input"
+          value="{{inputvalue}}"
+          type="text"
+          placeholder="搜索车辆"
+          bindinput="inputevent"
+        >
+        </input>
+      </view>
+      <view class="cancel" bindtap="search">
+        搜索
+      </view>
+      <view class="cancel" bindtap="cancel">
+        取消
+      </view>
+    </view>
+    <!--车列表-->
+    <view
+      class="carlist"
+      wx:for="{{showlist}}"
+      wx:for-index="idx"
+      wx:for-item="item"
+      bindtap="showdetail"
+      data-classify="{{item}}"
+      data-num="{{currentTab}}"
+    >
+      <view class="carlist_item">
+        <view class="carlist_item_state" wx:if="{{currentTab==0&&item.isRemarkOne==0}}">
+          待提交
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==0&&item.isRemarkOne==3}}"
+        >
+          待审核
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==0&&item.isRemarkOne==4}}"
+        >
+          驳回
+        </view>
+
+        <view class="carlist_item_state" wx:if="{{currentTab==1&&item.isRemarkFifth==1}}">
+          待入库
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==1&&item.isRemarkFifth==3}}"
+        >
+          待审核
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==1&&item.isRemarkFifth==4}}"
+        >
+          驳回
+        </view>
+
+        <view class="carlist_item_state" wx:if="{{currentTab==2&&item.isRemarkThree==0}}">
+          待处置
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==2&&item.isRemarkThree==3}}"
+        >
+          待审核
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==2&&item.isRemarkThree==4}}"
+        >
+          驳回
+        </view>
+        <view class="carlist_item_state" wx:if="{{currentTab==3&&item.isRemarkFour==0}}">
+          待结清
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==3&&item.isRemarkFour==3}}"
+        >
+          待审核
+        </view>
+        <view
+          class="carlist_item_state"
+          style="color: rgb(220,20,60);"
+          wx:if="{{currentTab==3&&item.isRemarkFour==4}}"
+        >
+          驳回
+        </view>
+        <view
+          class="carlist_item_check"
+          wx:if="{{currentTab==0&&item.isRemarkOne!=3}}"
+          catchtap="none"
+        >
+          <checkbox
+            class="carlist_item_checkbox"
+            catchtap="checkboxChange"
+            data-catch="{{idx}}"
+            checked="{{item.checked||false}}"
+          />
+          选择
+        </view>
+
+        <view class="carlist_item_one">
+          {{item.carName||''}}
+        </view>
+        <view class="carlist_item__">
+          <view class="carlist_item_two">
+            <image class="carlisticon" src="../../icon/carPlate.png">
+
+            </image>
+            <view class="">
+              车牌：{{item.carPlate||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/carOwner.png">
+
+            </image>
+            <view class="">
+              车主姓名:
+            </view>
+            <view style="">
+              {{item.carOwnerName||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/principal.png">
+            </image>
+            <view class="">
+              欠款金额:
+            </view>
+            <view style="">
+              {{item.principal||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/gujia.png">
+
+            </image>
+            <view class="">
+              车300估价:
+            </view>
+            <view style="">
+              {{item.evaluation||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/taskGroup.png">
+
+            </image>
+            <view class="">
+              分配队伍:
+            </view>
+            <view style="">
+              {{item.taskGroup||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three">
+            <image class="carlisticon" src="../../icon/projectName.png">
+
+            </image>
+            <view class="">
+              项目名称:
+            </view>
+            <view style="">
+              {{item.projectName||''}}
+            </view>
+          </view>
+          <view
+            class="carlist_item_three"
+            style="width:auto ;height:auto"
+            wx:if="{{currentTab ==1}}"
+          >
+            <image class="carlisticon" src="../../icon/addagpstime.png">
+
+            </image>
+            <view>
+              贴g时间:
+            </view>
+            <view style="width:500rpx ;height:auto">
+              {{item.firstPassTime||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==1}}">
+            <image class="carlisticon" src="../../icon/tuandui.png">
+
+            </image>
+            <view class="">
+              贴g团队:
+            </view>
+            <view style="">
+              {{item.firstSubUser||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==1}}">
+            <image class="carlisticon" src="../../icon/resttime.png">
+
+            </image>
+            <view class="">
+              倒计时:
+            </view>
+            <view style="">
+              {{item.countTime||''}}天
+            </view>
+          </view>
+          <view
+            class="carlist_item_three"
+            style="width:auto ;height:auto"
+            wx:if="{{currentTab ==2||currentTab ==4}}"
+          >
+            <image class="carlisticon" src="../../icon/addagpstime.png">
+
+            </image>
+            <view class="">
+              收车时间:
+            </view>
+            <view style="width:500rpx ;height:auto">
+              {{item.recoveryTime||''}}
+            </view>
+          </view>
+          <view class="carlist_item_three" wx:if="{{currentTab ==2||currentTab ==4}}">
+            <image class="carlisticon" src="../../icon/tuandui.png">
+
+            </image>
+            <view class="">
+              收车团队:
+            </view>
+            <view style="">
+              {{item.getCarGroup||''}}
+            </view>
+          </view>
+          <view
+            class="carlist_item_three"
+            style="width:auto ;height:auto"
+            wx:if="{{currentTab ==2||currentTab ==4}}"
+          >
+            <image class="carlisticon" src="../../icon/sentgarage.png">
+
+            </image>
+            <view class="">
+              送达车库:
+            </view>
+            <view style="">
+              {{item.sentGarage||''}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="buttom" hidden="{{checkarr.length==0}}">
+  <view class="two">
+    <view
+      class="twotext"
+      bindtap="addallcheck"
+      hidden="{{checkarr.length!=showlist.length}}"
+    >
+      全选
+    </view>
+    <view
+      class="twotext"
+      bindtap="cancelallcheck"
+      hidden="{{checkarr.length==showlist.length}}"
+    >
+      取消
+    </view>
+  </view>
+  <view class="">
+
+  </view>
+  <view class="one">
+    <view class="onetext" bindtap="changegroup">
+      队伍更换（{{checkarr.length}}）
+    </view>
+    <view class="onetext" bindtap="deleteitem">
+      项目删除
+    </view>
+  </view>
+</view>
+
+<modal
+  wx:if="{{grouplistpop}}"
+  title="请选择队伍"
+  confirm-text="确认"
+  cancel-text="取消"
+  bindcancel="grouplistchangecancel"
+  bindconfirm="grouplistchangeconfirm"
+>
+  <picker
+    class=""
+    wx:if="{{grouplistpop}}"
+    mode="selector"
+    range="{{grouplist}}"
+    range-key="name"
+    value="{{grouplistindex}}"
+    bindchange="sgrouplistindex"
+  >
+    <view>
+      分配队伍：{{grouplist[grouplistindex].name}}
+    </view>
+  </picker>
+</modal>
+

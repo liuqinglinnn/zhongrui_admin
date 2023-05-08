@@ -1,0 +1,243 @@
+<view class="biankuang">
+  <view class="title">
+    <view class="title_text">
+      实际用车人
+    </view>
+    <picker
+      class="title_input"
+      mode="selector"
+      value="{{usepeopleindex}}"
+      bindchange="susepeople"
+      range="{{usepeople}}"
+    >
+      <view>
+        {{usepeople[usepeopleindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="border"></view>
+  <view class="time">
+    <view class="time_text">
+      回收时间
+    </view>
+    <view class="time_">
+      <picker
+        class="time_date"
+        mode="date"
+        value="{{huishoudate}}"
+        start="2022-06-01"
+        end="2025-09-01"
+        bindchange="shuishoudate"
+      >
+        <view>
+          {{huishoudate}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="time">
+    <view class="time_text">
+      保全时间
+    </view>
+    <view class="time_">
+      <picker
+        class="time_date"
+        mode="date"
+        value="{{protectTime}}"
+        start="2022-06-01"
+        end="2025-09-01"
+        bindchange="baoquandate"
+      >
+        <view>
+          {{protectTime}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      入库仓库
+    </view>
+    <view
+      class="title_input"
+      wx:if="{{rukucangku==null||rukucangku==''}}"
+      bindtap="Chooseaddress"
+    >
+      获取位置信息
+    </view>
+    <view
+      class="title_input"
+      wx:if="{{rukucangku!=null}}"
+      bindtap="Chooseaddress"
+    >
+      {{rukucangku}}
+    </view>
+  </view>
+
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车上电话
+    </view>
+    <input
+      class="title_input"
+      value="{{cheshangdianhua}}"
+      type="number"
+      placeholder="请输入车上电话号码"
+      maxlength="20"
+      bindinput="scheshangdianhua"
+    >
+    </input>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      保全方
+    </view>
+    <input
+      class="title_input"
+      value="{{protectPerson}}"
+      type="text"
+      placeholder="请输入保全方"
+      maxlength="20"
+      bindinput="sprotectPerson"
+    >
+    </input>
+  </view>
+  <view class="title">
+    <view class="title_text">
+      保全方式
+    </view>
+    <input
+      class="title_input"
+      value="{{protectWay}}"
+      type="text"
+      placeholder="请输入保全方式"
+      maxlength="20"
+      bindinput="sprotectWay"
+    >
+    </input>
+  </view>
+  <view class="title">
+    <view class="title_text">
+      过户意愿
+    </view>
+    <input
+      class="title_input"
+      value="{{protectMind}}"
+      type="text"
+      placeholder="请输入过户意愿"
+      maxlength="20"
+      bindinput="sprotectMind"
+    >
+    </input>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      车钥匙
+    </view>
+    <picker
+      class="title_input"
+      mode="selector"
+      style="width:75rpx"
+      value="{{cheyaoshiindex}}"
+      bindchange="scheyaoshi"
+      range="{{cheyaoshi}}"
+    >
+      <view>
+        {{cheyaoshi[cheyaoshiindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      行驶证
+    </view>
+    <picker
+      class="title_input"
+      mode="selector"
+      style="width:75rpx"
+      value="{{xingshizhengindex}}"
+      bindchange="sxingshizheng"
+      range="{{xingshizheng}}"
+    >
+      <view>
+        {{xingshizheng[xingshizhengindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text">
+      车况描述
+    </view>
+    <textarea
+      class="content_input"
+      value="{{chekuangmiaoshu}}"
+      placeholder="请输入车况描述"
+      maxlength="200"
+      auto-height="true"
+      bindinput="schekuangmiaoshu"
+      bindlinechange="%{15}"
+    ></textarea>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text">
+      车内物品描述
+    </view>
+    <textarea
+      class="content_input"
+      value="{{cheneiwupingmiaoshu}}"
+      placeholder="请输入车内物品描述"
+      maxlength="200"
+      auto-height="true"
+      bindinput="scheneiwupingmiaoshu"
+      bindlinechange="%{15}"
+    ></textarea>
+  </view>
+  <view class="border"></view>
+  <view class="content">
+    <view class="content_text">
+      保全经过
+    </view>
+    <textarea
+      class="content_input"
+      value="{{protectText}}"
+      placeholder="请输入保全经过"
+      maxlength="200"
+      auto-height="true"
+      bindinput="sprotectText"
+      bindlinechange="%{15}"
+    ></textarea>
+  </view>
+  <view class="border"></view>
+  <view class="title">
+    <view class="title_text">
+      送达车库
+    </view>
+    <input
+      class="title_input"
+      value="{{songdacheku}}"
+      type="text"
+      placeholder="请输入送达车库"
+      maxlength="20"
+      bindinput="ssongdacheku"
+    >
+    </input>
+  </view>
+
+</view>
+
+<view class="end">
+  <view class="yes" bindtap="Submit">
+    <view>
+      确认修改
+    </view>
+  </view>
+</view>
+

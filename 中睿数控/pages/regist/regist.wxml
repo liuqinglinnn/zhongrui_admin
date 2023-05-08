@@ -1,0 +1,104 @@
+<view class="body">
+  <view class="login_one">
+    <view class="login_one_text">
+      姓名
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{nickname}}"
+        type="text"
+        placeholder="请输入姓名"
+        maxlength="20"
+        bindinput="snickname"
+      >
+      </input>
+    </view>
+  </view>
+  <view class="login_one">
+    <view class="login_one_text">
+      手机号
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{phone}}"
+        type="number"
+        placeholder="请输入手机号"
+        maxlength="20"
+        bindinput="sphone"
+      >
+      </input>
+    </view>
+  </view>
+  <view class="login_one">
+    <view class="login_one_text">
+      密码
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{password}}"
+        password="{{!open}}"
+        type="text"
+        placeholder="请输入密码"
+        maxlength="20"
+        bindinput="spassword"
+      >
+      </input>
+      <image
+        src="{{open?'../../icon/oeyes.png':'../../icon/ceyes.png'}}"
+        class="login_one_eyes"
+        catchtap="switch"
+      />
+    </view>
+  </view>
+  <view class="login_one">
+    <view class="login_one_text">
+      邀请码
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{sscode}}"
+        type="number"
+        placeholder="请输入公司邀请码"
+        maxlength="20"
+        bindinput="ssscode"
+      >
+      </input>
+    </view>
+  </view>
+  <view class="login_one">
+    <view class="login_one_text">
+      队伍
+    </view>
+    <view class="login_one_">
+      <input
+        class="login_one_input"
+        value="{{belongGroup}}"
+        type="text"
+        placeholder="请输入账号所属队伍"
+        maxlength="20"
+        bindinput="sbelongGroup"
+      >
+      </input>
+    </view>
+  </view>
+</view>
+<view class="bottom">
+  <view class="denglu" bindtap="submit">
+    同意授权并注册
+  </view>
+</view>
+
+<view class="" style="margin-top:150rpx">
+  注意事项：
+  <view class="">
+    1注册前请阅读《用户服务协议》及《隐私政策》
+  </view>
+  <view class="">
+    2注册信息用于公司内部核实员工身份
+  </view>
+</view>
+
